@@ -23,19 +23,18 @@ public class Main {
         outputStream.flush();
         outputStream.writeObject("Conexão estabelecida!");
 
-        while (!message.equals("Exit")) {
-            message = inputStream.readObject().toString();
-            if (!message.equals("")) {
-                System.out.println(message);
-                outputStream.flush();
-                outputStream.writeObject("Ok");
+        while (true) {
+            try {
+                message = inputStream.readObject().toString();
+                if (!message.equals("")) {
+                    System.out.println(message);
+                    outputStream.flush();
+                    outputStream.writeObject("Ok");
+                }
+            }catch (Exception e) {
+                System.out.println("Conexão encerrada!");
+                break;
             }
         }
-
-        outputStream.flush();
-        outputStream.writeObject("Conexão encerrada!");
-        outputStream.close();
-        inputStream.close();
-        System.out.println("Conexão encerrada!");
     }
 }

@@ -1,9 +1,6 @@
 package com.company;
 
-import javax.swing.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
@@ -15,16 +12,22 @@ public class ResponseThread implements Runnable {
         this.socket = _socket;
     }
 
-	public void run() {
+    public void run() {
         try {
-            inputStream = new ObjectInputStream(socket.getInputStream());
-            while (true) {
+            if (socket.isConnected()) {
+                inputStream = new ObjectInputStream(socket.getInputStream());
+                while (true) {
 
-                System.out.println("Resposta: " + inputStream.readObject());
+                    System.out.println("Resposta: " + inputStream.readObject());
+
+
+                }
+            } else {
+                System.out.println("Conexão encerrada!");
             }
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Não foi possível receber a mensagem do servidor!");
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

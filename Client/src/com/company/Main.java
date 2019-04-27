@@ -48,9 +48,7 @@ public class Main {
 
             if (!menu.isAlive()) {
                 Thread.sleep(5000);
-                response.interrupt();
                 socket.close();
-                System.out.println("Wait is over");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

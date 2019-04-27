@@ -33,7 +33,6 @@ public class MenuThread implements Runnable {
 				command = scn.nextLine();
 
 				if (command.equals("Exit")) {
-					//outputStream.close();
 					break;
 				}
 				else {
