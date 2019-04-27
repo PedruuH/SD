@@ -14,16 +14,10 @@ public class ResponseThread implements Runnable {
 
     public void run() {
         try {
-            if (socket.isConnected()) {
-                inputStream = new ObjectInputStream(socket.getInputStream());
-                while (true) {
+            inputStream = new ObjectInputStream(socket.getInputStream());
 
-                    System.out.println("Resposta: " + inputStream.readObject());
-
-
-                }
-            } else {
-                System.out.println("Conexão encerrada!");
+            while (true) {
+                System.out.println("Resposta: " + inputStream.readObject());
             }
         } catch (IOException e) {
             System.out.println("Não foi possível receber a mensagem do servidor!");
