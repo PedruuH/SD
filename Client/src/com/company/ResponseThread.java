@@ -20,8 +20,8 @@ public class ResponseThread implements Runnable {
                 System.out.println("Resposta: " + inputStream.readObject());
             }
         } catch (IOException e) {
-            System.out.println("Não foi possível receber a mensagem do servidor!");
-            e.printStackTrace();
+            System.out.println("Conexão perdida! Por favor, tente reiniciar o programa.");
+            //e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

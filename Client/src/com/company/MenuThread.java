@@ -68,7 +68,7 @@ public class MenuThread implements Runnable {
                     System.out.println("3. Update <id> values <values>");
                     System.out.println("4. Delete <id>");
                     System.out.println("5. Exit");
-                    System.out.println("------------------------------------------\n");
+                    System.out.println("------------------------------------------");
                     command = scn.nextLine();
 
                     if (command.equals("Exit")) {
@@ -82,7 +82,6 @@ public class MenuThread implements Runnable {
                         } else System.out.println("\nComando inválido!");
                     }
                 }
-                System.out.println("\nConexão encerrada!");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (UnknownHostException e) {
