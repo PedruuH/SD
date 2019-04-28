@@ -73,8 +73,6 @@ public class MenuThread implements Runnable {
 
                     if (command.equals("Exit")) {
                         Thread.sleep(5000);
-                        response.stop();
-                        socket.close();
                         break;
                     } else {
                         if (validation(command)) {
