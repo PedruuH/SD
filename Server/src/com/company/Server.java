@@ -48,6 +48,8 @@ public class Server {
 
                     outputStream.flush();
                     outputStream.writeObject("Conexão estabelecida!");
+
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

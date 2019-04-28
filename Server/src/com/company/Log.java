@@ -35,7 +35,11 @@ public class Log {
     }
 
     public void write(String content) {
-       if (isOpen) { printWriter.printf(content + "%n"); System.out.println("Comando gravado no arquivo log."); }
+       if (isOpen) {
+           printWriter.printf(content + "%n");
+           printWriter.flush();
+           System.out.println("Comando gravado no arquivo log.");
+       }
        else System.out.println("O arquivo " + file + " não está aberto!");
     }
 }
