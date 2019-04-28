@@ -3,13 +3,16 @@ package com.company;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.concurrent.BlockingQueue;
 
-public class ResponseThread implements Runnable {
+public class ReceptionThread implements Runnable {
     private Socket socket;
+    private final BlockingQueue queue;
     private ObjectInputStream inputStream;
 
-    public ResponseThread(Socket _socket) {
+    public ReceptionThread(Socket _socket, BlockingQueue _queue) {
         this.socket = _socket;
+        this.queue = _queue;
     }
 
     public void run() {
@@ -17,14 +20,14 @@ public class ResponseThread implements Runnable {
             inputStream = new ObjectInputStream(socket.getInputStream());
 
             while (true) {
-                System.out.println("Resposta: " + inputStream.readObject());
+                queue.put(inputStream.readObject());
             }
         } catch (IOException e) {
-            System.out.println("Conexão perdida! Por favor, tente reiniciar o programa.");
-            //e.printStackTrace();
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
     }
 }
