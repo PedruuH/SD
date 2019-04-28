@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.*;
-import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -92,8 +91,8 @@ public class MenuThread implements Runnable {
 				System.out.println("Ocorreu uma falha!\nPor favor, verifique a disponibilidade do servidor.");
 				e.printStackTrace();
 			}
-
 			scn.close();
+			System.out.println("\nConexão encerrada!");
 		}
 	}
     
