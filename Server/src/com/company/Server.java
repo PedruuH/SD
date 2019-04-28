@@ -7,44 +7,51 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Server {
+    private static int port;
+    private static Config config = new Config();
+
     public static void main(String argv[]) {
-        int port = 6789;
+        config.load();
 
-        BlockingQueue queue1 = new LinkedBlockingQueue();
-        BlockingQueue queue2 = new LinkedBlockingQueue();
-        BlockingQueue queue3 = new LinkedBlockingQueue();
+        if (config.getIsLoaded()) {
+            port = config.getPort();
 
-        try {
-            ServerSocket welcomeSocket = new ServerSocket(port);
-            System.out.println("Servidor ouvindo a porta " + port);
+            BlockingQueue queue1 = new LinkedBlockingQueue();
+            BlockingQueue queue2 = new LinkedBlockingQueue();
+            BlockingQueue queue3 = new LinkedBlockingQueue();
 
-            Thread organizer = new Thread(new OrganizerThread(queue1, queue2, queue3));
-            organizer.setDaemon(true);
-            organizer.start();
+            try {
+                ServerSocket welcomeSocket = new ServerSocket(port);
+                System.out.println("Servidor ouvindo a porta " + port);
 
-            Thread execution = new Thread(new ExecutionThread(queue3));
-            execution.setDaemon(true);
-            execution.start();
+                Thread organizer = new Thread(new OrganizerThread(queue1, queue2, queue3));
+                organizer.setDaemon(true);
+                organizer.start();
 
-            Thread log = new Thread(new LogThread(queue2));
-            log.setDaemon(true);
-            log.start();
+                Thread execution = new Thread(new ExecutionThread(queue3));
+                execution.setDaemon(true);
+                execution.start();
 
-            while (true) {
-                Socket connectionSocket = welcomeSocket.accept();
-                System.out.println("Cliente conectado: " + connectionSocket.getInetAddress().getHostAddress());
+                Thread log = new Thread(new LogThread(queue2));
+                log.setDaemon(true);
+                log.start();
 
-                Thread reception = new Thread(new ReceptionThread(connectionSocket, queue1));
-                reception.setDaemon(true);
-                reception.start();
+                while (true) {
+                    Socket connectionSocket = welcomeSocket.accept();
+                    System.out.println("Cliente conectado: " + connectionSocket.getInetAddress().getHostAddress());
 
-                ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+                    Thread reception = new Thread(new ReceptionThread(connectionSocket, queue1));
+                    reception.setDaemon(true);
+                    reception.start();
 
-                outputStream.flush();
-                outputStream.writeObject("Conexão estabelecida!");
+                    ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+
+                    outputStream.flush();
+                    outputStream.writeObject("Conexão estabelecida!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            System.out.println("Conexão encerrada!");
         }
     }
 }

@@ -7,7 +7,6 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class MenuThread implements Runnable {
-    private static String config = "config.txt";
     private static String server;
     private static int port;
     private static InetAddress serverIpAddress;
@@ -15,41 +14,17 @@ public class MenuThread implements Runnable {
     private Socket socket;
     private Scanner scn;
     private String command;
-    ObjectOutputStream outputStream;
+    private ObjectOutputStream outputStream;
 
-    public boolean loadConfig() {
-        try {
-            FileReader file = new FileReader(config);
-            BufferedReader fileReader = new BufferedReader(file);
-
-            String line = fileReader.readLine();
-
-            String[] fields;
-
-            while (line != null) {
-                fields = line.split(":");
-                if (fields.length > 1 && fields[0].equals("Porta")) port = Integer.parseInt(fields[1].replace(" ", ""));
-                if (fields.length > 1 && fields[0].equals("Servidor")) server = fields[1].replace(" ", "");
-                line = fileReader.readLine();
-            }
-
-            file.close();
-
-            return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Não foi possível carregar as configurações!");
-            return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Não foi possível carregar as configurações!");
-            return false;
-        }
-    }
+    private Config config = new Config();
 
     public void run() {
-        if (loadConfig()) {
+        config.load();
+        if (config.getIsLoaded()) {
             scn = new Scanner(System.in);
+
+            server = config.getServer();
+            port = config.getPort();
 
             try {
                 serverIpAddress = InetAddress.getByName(server);
