@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -38,9 +39,9 @@ public class MenuThread implements Runnable {
 
                 while (true) {
                     System.out.println("\n----------- Lista de Comandos ------------");
-                    System.out.println("1. Insert <values>");
+                    System.out.println("1. Insert <id> value <value>");
                     System.out.println("2. Select <id>");
-                    System.out.println("3. Update <id> values <values>");
+                    System.out.println("3. Update <id> value <values>");
                     System.out.println("4. Delete <id>");
                     System.out.println("5. Exit");
                     System.out.println("------------------------------------------");
@@ -70,27 +71,35 @@ public class MenuThread implements Runnable {
     }
 
     public boolean validation(String text) {
-        String[] elements = text.split(" ");
+        char c;
+        String command = "";
 
-        switch (elements[0]) {
-            case "Insert":
+        for (int i = 0; i < text.length(); i++) {
+            c = text.charAt(i);
+            if (c == ' ') break;
+            command += c;
+        }
+
+        switch (command.toLowerCase()) {
+            case "insert":
+            case "update":
+                String[] elements = text.split("(?i)value");
                 if (elements.length < 2) return false;
-
-                break;
-            case "Select":
-            case "Delete":
-                if (elements.length != 2) return false;
+                elements =  elements[0].split(" ");
+                if (elements.length < 2) return false;
                 try {
-                    Integer.parseInt(elements[1]);
-                } catch (NumberFormatException e) {
+                    BigInteger b = new BigInteger(elements[1]);
+                } catch (NumberFormatException | NullPointerException nfe) {
                     return false;
                 }
                 break;
-            case "Update":
-                if (elements.length < 4 || !elements[2].equals("values")) return false;
+            case "select":
+            case "delete":
+                elements =  text.split(" ");
+                if (elements.length < 2) return false;
                 try {
-                    Integer.parseInt(elements[1]);
-                } catch (NumberFormatException e) {
+                    BigInteger b = new BigInteger(elements[1]);
+                } catch (NumberFormatException | NullPointerException nfe) {
                     return false;
                 }
                 break;

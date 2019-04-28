@@ -1,13 +1,2 @@
-Insert teste
-Update 01 values NovoTeste
-Delete 01
-Delete 01
-Insert TesteInput
-Delete 01
-Delete 01
-Delete 01
-Delete 01
-Delete 01
-Delete 01
-Delete 01
-Delete 01
+Insert 1 value Teste01
+Insert 2 value Teste02
