@@ -3,21 +3,20 @@ package com.company;
 import java.util.concurrent.BlockingQueue;
 
 public class LogThread implements Runnable {
-    private final BlockingQueue queue;
+    private final BlockingQueue<Input> queue;
     private Log log = new Log();
     private String command;
 
-    public LogThread(BlockingQueue _queue) {
+    public LogThread(BlockingQueue<Input> _queue) {
         this.queue = _queue;
     }
 
     public void run() {
         try {
+            log.open();
             while (true) {
-                log.open();
-                command = queue.take().toString();
+                command = queue.take().getCommand();
                 if (!command.contains("Select")) log.write(command);
-                log.close();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

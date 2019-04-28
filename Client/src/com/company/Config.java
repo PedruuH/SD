@@ -16,10 +16,10 @@ public class Config {
     public void load() {
         if (!isLoaded) {
             try {
-                FileReader file = new FileReader(config);
-                BufferedReader fileReader = new BufferedReader(file);
+                FileReader fileReader = new FileReader(config);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-                String line = fileReader.readLine();
+                String line = bufferedReader.readLine();
 
                 String[] fields;
 
@@ -27,10 +27,10 @@ public class Config {
                     fields = line.split(":");
                     if (fields.length > 1 && fields[0].equals("Porta")) port = Integer.parseInt(fields[1].replace(" ", ""));
                     if (fields.length > 1 && fields[0].equals("Endereco")) server = fields[1].replace(" ", "");
-                    line = fileReader.readLine();
+                    line = bufferedReader.readLine();
                 }
 
-                file.close();
+                fileReader.close();
 
                 isLoaded = true;
             } catch (FileNotFoundException e) {
@@ -48,12 +48,12 @@ public class Config {
     }
 
     public String getServer() {
-        if (isLoaded) System.out.println("Atenção! As configurações ainda não foram carregadas.");
+        if (!isLoaded) System.out.println("Atenção! As configurações ainda não foram carregadas.");
         return this.server;
     }
 
     public int getPort() {
-        if (isLoaded) System.out.println("Atenção! As configurações ainda não foram carregadas.");
+        if (!isLoaded) System.out.println("Atenção! As configurações ainda não foram carregadas.");
         return this.port;
     }
 }

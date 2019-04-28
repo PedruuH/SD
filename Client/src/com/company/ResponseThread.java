@@ -17,11 +17,11 @@ public class ResponseThread implements Runnable {
             inputStream = new ObjectInputStream(socket.getInputStream());
 
             while (true) {
-                System.out.println("Resposta: " + inputStream.readObject());
+                System.out.println("Resposta: " + inputStream.readObject().toString());
             }
         } catch (IOException e) {
             System.out.println("Conexão perdida! Por favor, tente reiniciar o programa.");
-            //e.printStackTrace();
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

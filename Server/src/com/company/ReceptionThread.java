@@ -2,25 +2,24 @@ package com.company;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.Socket;
+import java.io.ObjectOutputStream;
 import java.util.concurrent.BlockingQueue;
 
 public class ReceptionThread implements Runnable {
-    private Socket socket;
-    private final BlockingQueue queue;
     private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream;
+    private final BlockingQueue<Input> queue;
 
-    public ReceptionThread(Socket _socket, BlockingQueue _queue) {
-        this.socket = _socket;
+    public ReceptionThread(ObjectInputStream _inputStream, ObjectOutputStream _outputStream, BlockingQueue<Input> _queue) {
+        this.inputStream = _inputStream;
+        this.outputStream = _outputStream;
         this.queue = _queue;
     }
 
     public void run() {
         try {
-            inputStream = new ObjectInputStream(socket.getInputStream());
-
             while (true) {
-                queue.put(inputStream.readObject());
+                queue.put(new Input(outputStream, inputStream.readObject().toString()));
             }
         } catch (IOException e) {
             e.printStackTrace();
