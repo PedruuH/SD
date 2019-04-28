@@ -14,32 +14,32 @@ public class Config {
     private static int port;
 
     public void load() {
-        try {
-            FileReader file = new FileReader(config);
-            BufferedReader fileReader = new BufferedReader(file);
+        if (!isLoaded) {
+            try {
+                FileReader file = new FileReader(config);
+                BufferedReader fileReader = new BufferedReader(file);
 
-            String line = fileReader.readLine();
+                String line = fileReader.readLine();
 
-            String[] fields;
+                String[] fields;
 
-            while (line != null) {
-                fields = line.split(":");
-                if (fields.length > 1 && fields[0].equals("Porta")) port = Integer.parseInt(fields[1].replace(" ", ""));
-                if (fields.length > 1 && fields[0].equals("Endereco")) server = fields[1].replace(" ", "");
-                line = fileReader.readLine();
+                while (line != null) {
+                    fields = line.split(":");
+                    if (fields.length > 1 && fields[0].equals("Porta")) port = Integer.parseInt(fields[1].replace(" ", ""));
+                    if (fields.length > 1 && fields[0].equals("Endereco")) server = fields[1].replace(" ", "");
+                    line = fileReader.readLine();
+                }
+
+                file.close();
+
+                isLoaded = true;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Não foi possível carregar as configurações!");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Não foi possível carregar as configurações!");
             }
-
-            file.close();
-
-            isLoaded = true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Não foi possível carregar as configurações!");
-            isLoaded = false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Não foi possível carregar as configurações!");
-            isLoaded = false;
         }
     }
 

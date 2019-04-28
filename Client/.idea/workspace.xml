@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1fd6116-b961-4116-806e-73a624d6c315" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/MenuThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MenuThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/src/com/company/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/company/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/company/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/company/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/company/LogThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/company/LogThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="57" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="319">
+              <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1401#1402#0" expanded="true" />
@@ -80,12 +80,12 @@
         <option value="$PROJECT_DIR$/src/com/company/Connection.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/ResponseThread.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Config.java" />
         <option value="$PROJECT_DIR$/src/com/company/MenuThread.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Config.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -201,7 +201,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14332604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33150986" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -250,8 +250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
+        <state relative-caret-position="319">
+          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1401#1402#0" expanded="true" />
