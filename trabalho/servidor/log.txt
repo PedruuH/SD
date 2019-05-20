@@ -1,4 +1,0 @@
-Insert Teste 01
-Insert Teste 01
-Update 0 value Teste 00
-Delete 1
