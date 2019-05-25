@@ -8,7 +8,7 @@ public interface SelectRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int64 id = 1;</code>
    */
-  int getId();
+  long getId();
 }

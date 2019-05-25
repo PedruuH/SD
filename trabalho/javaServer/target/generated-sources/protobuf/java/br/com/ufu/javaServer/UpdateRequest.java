@@ -45,7 +45,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            id_ = input.readInt32();
+            id_ = input.readInt64();
             break;
           }
           case 18: {
@@ -87,11 +87,11 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private int id_;
+  private long id_;
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int64 id = 1;</code>
    */
-  public int getId() {
+  public long getId() {
     return id_;
   }
 
@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0) {
-      output.writeInt32(1, id_);
+    if (id_ != 0L) {
+      output.writeInt64(1, id_);
     }
     if (!getContentBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
@@ -158,9 +158,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0) {
+    if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, id_);
+        .computeInt64Size(1, id_);
     }
     if (!getContentBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
@@ -196,7 +196,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getId());
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -332,7 +333,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0;
+      id_ = 0L;
 
       content_ = "";
 
@@ -412,7 +413,7 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(br.com.ufu.javaServer.UpdateRequest other) {
       if (other == br.com.ufu.javaServer.UpdateRequest.getDefaultInstance()) return this;
-      if (other.getId() != 0) {
+      if (other.getId() != 0L) {
         setId(other.getId());
       }
       if (!other.getContent().isEmpty()) {
@@ -448,28 +449,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int id_ ;
+    private long id_ ;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      */
-    public int getId() {
+    public long getId() {
       return id_;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      */
-    public Builder setId(int value) {
+    public Builder setId(long value) {
       
       id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      */
     public Builder clearId() {
       
-      id_ = 0;
+      id_ = 0L;
       onChanged();
       return this;
     }

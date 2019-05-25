@@ -66,11 +66,11 @@ public final class Server {
       "\n\014Server.proto\022\025br.com.ufu.javaServer\" \n" +
       "\rInsertRequest\022\017\n\007content\030\001 \001(\t\"\"\n\016Inser" +
       "tResponse\022\020\n\010response\030\001 \001(\t\"\033\n\rSelectReq" +
-      "uest\022\n\n\002id\030\001 \001(\005\"\"\n\016SelectResponse\022\020\n\010re" +
+      "uest\022\n\n\002id\030\001 \001(\003\"\"\n\016SelectResponse\022\020\n\010re" +
       "sponse\030\001 \001(\t\",\n\rUpdateRequest\022\n\n\002id\030\001 \001(" +
-      "\005\022\017\n\007content\030\002 \001(\t\"\"\n\016UpdateResponse\022\020\n\010" +
+      "\003\022\017\n\007content\030\002 \001(\t\"\"\n\016UpdateResponse\022\020\n\010" +
       "response\030\001 \001(\t\"\033\n\rDeleteRequest\022\n\n\002id\030\001 " +
-      "\001(\005\"\"\n\016DeleteResponse\022\020\n\010response\030\001 \001(\t2" +
+      "\001(\003\"\"\n\016DeleteResponse\022\020\n\010response\030\001 \001(\t2" +
       "\356\002\n\020ReceptionService\022U\n\006insert\022$.br.com." +
       "ufu.javaServer.InsertRequest\032%.br.com.uf" +
       "u.javaServer.InsertResponse\022U\n\006select\022$." +

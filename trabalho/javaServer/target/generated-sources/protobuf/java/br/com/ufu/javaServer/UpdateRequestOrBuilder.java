@@ -8,9 +8,9 @@ public interface UpdateRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int64 id = 1;</code>
    */
-  int getId();
+  long getId();
 
   /**
    * <code>string content = 2;</code>

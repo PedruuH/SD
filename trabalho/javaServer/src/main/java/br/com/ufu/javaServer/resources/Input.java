@@ -1,14 +1,18 @@
 package br.com.ufu.javaServer.resources;
 
+import java.math.BigInteger;
+
 public class Input {
 	private long id;
     private String content;
     private int operation; // 0 - Insert, 1 - Select, 2 - Update, 3 - Delete;
+    private BigInteger responseId;
 
-    public Input(long _id, String _content, int _operation) {
+    public Input(long _id, String _content, int _operation, BigInteger _responseId) {
     	this.id = _id;
         this.content = _content;
         this.operation = _operation;
+        this.responseId = _responseId;
     }
     
     public void setId(long _id) {
@@ -33,5 +37,13 @@ public class Input {
     
     public int getOperation() {
     	return this.operation;
+    }
+    
+    public void setResponseId(BigInteger _responseId) {
+    	this.responseId = _responseId;
+    }
+    
+    public BigInteger getResponseId() {
+    	return this.responseId;
     }
 }
