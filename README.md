@@ -14,17 +14,12 @@ $ sudo apt install maven
 
 ## Execução:
 
-Antes de de iniciar a execução do servidor ou cliente, utilize o comando:
-```
-$ mvn -DskipTests package
-```
-
-Servidor: 
+Para iniciar a execução do servidor, utilize o comando: 
 ```
 $ mvn package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.server.JavaServer
 ```
 
-Cliente:  
+Após iniciado o servidor, utilize o comando para a execução do cliente: 
 ```
 $ mvn package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.client.JavaClient
 ```
