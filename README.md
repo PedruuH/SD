@@ -9,7 +9,7 @@ Primeiramente é necessária a instalação da ferramenta Maven
 
 No terminal, utilize o comando:
 ```
-sudo apt install maven
+$ sudo apt install maven
 ```
 
 ## Execução:
