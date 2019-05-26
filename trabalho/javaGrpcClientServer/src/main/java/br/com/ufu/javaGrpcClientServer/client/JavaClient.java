@@ -20,7 +20,7 @@ public class JavaClient {
 
         InsertResponse insertResponse = stub.insert(InsertRequest.newBuilder().setContent("teste").build());
 
-        System.out.println("Response received from server:\n" + insertResponse);
+        System.out.println(insertResponse);
 
         channel.shutdown();
     }
