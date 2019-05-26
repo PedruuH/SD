@@ -6,5 +6,5 @@ Projetos desenvolvidos para disciplina de Sistemas Distribuidos.
 
 $ mvn -DskipTests package
 
-Servidor: $ mvn -DskipTests package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.server.JavaServer
+Servidor: $ mvn -DskipTests package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.server.JavaServer\n
 Cliente:  $ mvn -DskipTests package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.client.JavaClient
