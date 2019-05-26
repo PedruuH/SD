@@ -21,10 +21,10 @@ $ mvn -DskipTests package
 
 Servidor: 
 ```
-$ mvn -DskipTests package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.server.JavaServer
+$ mvn package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.server.JavaServer
 ```
 
 Cliente:  
 ```
-$ mvn -DskipTests package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.client.JavaClient
+$ mvn package exec:java -Dexec.mainClass=br.com.ufu.javaGrpcClientServer.client.JavaClient
 ```
