@@ -13,7 +13,7 @@ public class ResponseThread implements Runnable {
 		while (true) {
 			try {
 				if (!responseQueue.isEmpty())
-					System.out.println("Resposta: " + responseQueue.take());
+					System.out.println(responseQueue.take().toString().replace("response: ", "Resposta: "));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

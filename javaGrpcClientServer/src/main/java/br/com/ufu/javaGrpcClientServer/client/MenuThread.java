@@ -22,16 +22,15 @@ public class MenuThread implements Runnable {
 
 	public void run() {
 		scn = new Scanner(System.in);
+		System.out.println("\n----------- Lista de Comandos ------------");
+		System.out.println("1. Insert <value>");
+		System.out.println("2. Select <id>");
+		System.out.println("3. Update <id> <value>");
+		System.out.println("4. Delete <id>");
+		System.out.println("5. Exit");
+		System.out.println("------------------------------------------");
 		
 		while (true) {
-			System.out.println("\n----------- Lista de Comandos ------------");
-			System.out.println("1. Insert <value>");
-			System.out.println("2. Select <id>");
-			System.out.println("3. Update <id> <value>");
-			System.out.println("4. Delete <id>");
-			System.out.println("5. Exit");
-			System.out.println("------------------------------------------");
-			
 			String input = null;
 			
 			if (!scn.hasNext())
@@ -47,7 +46,7 @@ public class MenuThread implements Runnable {
 				if (output != null)
 					 responseQueue.add(output);
 				else
-					System.out.println("\nComando inválido!");
+					System.out.println("Resposta: Comando inválido!\n");
 			}
 		}
 		scn.close();
