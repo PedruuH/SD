@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import br.com.ufu.javaGrpcClientServer.client.ExecutionThread;
 import br.com.ufu.javaGrpcClientServer.resources.Input;
 import br.com.ufu.javaGrpcClientServer.services.CrudServiceImpl;
 import io.grpc.Server;
@@ -12,18 +13,36 @@ import io.grpc.ServerBuilder;
 public class JavaServer {
 	private static int port;
 	
-	private BlockingQueue<Input> receptionQueue = new LinkedBlockingQueue<Input>();	
+	private Thread organizerThread;
+	private Thread executionThread;
+	
+	private BlockingQueue<Input> receptionQueue;	
+	private BlockingQueue<Input> executionQueue;
+	private BlockingQueue<Input> logQueue;
+	private BlockingQueue<Input> repassQueue;
 		
 	private Server receptionThread;
 	
 	public JavaServer() {
-		Thread organizer = new Thread(new OrganizerThread(receptionQueue));
-        organizer.setDaemon(true);
-        organizer.start();
+		receptionQueue = new LinkedBlockingQueue<Input>();	
+		executionQueue = new LinkedBlockingQueue<Input>();
+		logQueue = new LinkedBlockingQueue<Input>();
+		repassQueue = new LinkedBlockingQueue<Input>();
+		
+		organizerThread = new Thread(
+				new OrganizerThread(receptionQueue, executionQueue, logQueue, repassQueue));
+		executionThread = new Thread(
+				new ExecutionThread(executionQueue));
 	}
 
 	private void start() throws IOException {
 		port = 9876;
+		
+		organizerThread.setDaemon(true);
+		organizerThread.start();
+		
+		executionThread.setDaemon(true);
+		executionThread.start();
 		
 		receptionThread = ServerBuilder.forPort(port).addService(
 				new CrudServiceImpl(receptionQueue)).build().start();
