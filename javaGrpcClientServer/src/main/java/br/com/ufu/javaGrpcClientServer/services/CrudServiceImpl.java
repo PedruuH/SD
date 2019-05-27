@@ -1,6 +1,6 @@
 package br.com.ufu.javaGrpcClientServer.services;
 
-import br.com.ufu.javaGrpcClientServer.ReceptionServiceGrpc.ReceptionServiceImplBase;
+import br.com.ufu.javaGrpcClientServer.CrudServiceGrpc.CrudServiceImplBase;
 
 import io.grpc.stub.StreamObserver;
 
@@ -19,12 +19,12 @@ import br.com.ufu.javaGrpcClientServer.resources.EventSource.Observer;
 
 import java.util.concurrent.BlockingQueue;
 
-public class ReceptionServiceImpl extends ReceptionServiceImplBase {
+public class CrudServiceImpl extends CrudServiceImplBase {
 	// private static final String responseError = "Não foi possível recuperar a resposta para sua solicitação.";
 	
 	public BlockingQueue<Input> requisitionsQueue;
 			
-	public ReceptionServiceImpl(BlockingQueue<Input> _requisitions) {
+	public CrudServiceImpl(BlockingQueue<Input> _requisitions) {
 		this.requisitionsQueue = _requisitions;
 	}
 	

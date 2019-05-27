@@ -5,19 +5,19 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import br.com.ufu.javaGrpcClientServer.resources.Input;
-import br.com.ufu.javaGrpcClientServer.services.ReceptionServiceImpl;
+import br.com.ufu.javaGrpcClientServer.services.CrudServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
 public class JavaServer {
 	private static int port;
 	
-	private BlockingQueue<Input> receptinQueue = new LinkedBlockingQueue<Input>();	
+	private BlockingQueue<Input> receptionQueue = new LinkedBlockingQueue<Input>();	
 		
 	private Server receptionThread;
 	
 	public JavaServer() {
-		Thread organizer = new Thread(new OrganizerThread(receptinQueue));
+		Thread organizer = new Thread(new OrganizerThread(receptionQueue));
         organizer.setDaemon(true);
         organizer.start();
 	}
@@ -26,7 +26,7 @@ public class JavaServer {
 		port = 9876;
 		
 		receptionThread = ServerBuilder.forPort(port).addService(
-				new ReceptionServiceImpl(receptinQueue)).build().start();
+				new CrudServiceImpl(receptionQueue)).build().start();
 		
 		System.out.println("Servidor ouvindo a porta " + port);
 		
